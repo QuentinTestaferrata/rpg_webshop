@@ -23,6 +23,7 @@ class User extends Authenticatable //implements MustVerifyEmail
         'email',
         'password',
         'birthday',
+        'profile_picture',
     ];
 
     /**
@@ -44,4 +45,8 @@ class User extends Authenticatable //implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function getProfilePictureUrlAttribute(): ?string
+    {
+        return $this->profile_picture ? asset('storage/' . $this->profile_picture) : null;
+    }
 }

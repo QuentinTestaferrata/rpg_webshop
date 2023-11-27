@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //->name('home')
 //->middleware(AdminMiddleware::class)
 ;
+
+//profile page
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
