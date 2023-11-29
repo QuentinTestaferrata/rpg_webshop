@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         $items = Item::all();
+        $user = auth()->user();
 
+        $items->transform(function ($item) use ($user) {
+            $item->description = str_replace(':username', $user->name, $item->description);
+            return $item;
+        });
         return view('home', compact('items'));
     }
 }
