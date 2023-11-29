@@ -1,0 +1,12 @@
+.item-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    background-color: rgb(212, 199, 179);
+}
+
+.item-card:hover {
+    transform: scale(1.05);
+}
+
