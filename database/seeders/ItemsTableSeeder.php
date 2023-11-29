@@ -51,5 +51,12 @@ class ItemsTableSeeder extends Seeder
             'category' => 'Wand',
             'image' => 'item_images/wand.jpg',
         ]);
+        Item::create([
+            'name' => 'Healers Kit',
+            'description' => 'Healers starter pack',
+            'price' => 25,
+            'category' => 'Adventure Kit',
+            'image' => 'item_images/Healers_kit.jpg',
+        ]);
     }
 }

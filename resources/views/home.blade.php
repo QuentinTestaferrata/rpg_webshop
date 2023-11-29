@@ -38,7 +38,7 @@
                                 <label for="Potion" class="form-check-label">Potions</label>
                             </li>
                             <li class="px-3">
-                                <input type="radio" name="category" id="Adventure_kit" class="form-check-input">
+                                <input type="radio" name="category" id="Adventure kit" class="form-check-input">
                                 <label for="Adventure_kit" class="form-check-label">Adventure Kits</label>
                             </li>
                         </ul>
