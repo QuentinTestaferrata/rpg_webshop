@@ -105,5 +105,14 @@
         #profilePictureInput {
             display: none;
         }
+        body {
+            background-image: url('{{ asset('images/profilepicture.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        html, body {
+    height: 100%;
+}
     </style>
 @endsection
