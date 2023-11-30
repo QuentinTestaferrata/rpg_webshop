@@ -18,13 +18,23 @@
             color: white;
         }
         .fantasy-forge-logo {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 100%;
-        height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+    animation: breathe 4s infinite ease-in-out;
+}
+
+@keyframes breathe {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
     }
+    50% {
+        transform: translate(-50%, -50%) scale(1.07);
+    }
+}
         </style>
     </head>
     <body class="antialiased">

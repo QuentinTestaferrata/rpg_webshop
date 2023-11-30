@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CreateController;
+use App\Http\Controllers\DeleteItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
+    Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
+    Route::delete('/delete_item/{id}', [DeleteItemController::class, 'deleteItem'])->name('delete_item');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
 //->name('home')
