@@ -19,7 +19,7 @@ class ItemsTableSeeder extends Seeder
             'description' => 'Restores health... Get stronger.',
             'price' => 5,
             'category' => 'Potion',
-            'image' => 'item_images/health_potion.jpg',
+            'image' => 'storage/item_images/health_potion.jpg',
         ]);
         // Sword
         Item::create([
@@ -27,7 +27,7 @@ class ItemsTableSeeder extends Seeder
             'description' => 'A long sword to compensate for other stuff.',
             'price' => 29.99,
             'category' => 'Sword',
-            'image' => 'item_images/sword.jpg',
+            'image' => 'storage/item_images/sword.jpg',
         ]);
         // Helmet
         Item::create([
@@ -35,28 +35,28 @@ class ItemsTableSeeder extends Seeder
             'description' => 'A helmet to protect your empty head.',
             'price' => 19,
             'category' => 'Armor',
-            'image' => 'item_images/helmet.jpg',
+            'image' => 'storage/item_images/helmet.jpg',
         ]);
         Item::create([
             'name' => 'Golden Ring',
             'description' => 'A golden ring, perfect for your mistress.',
             'price' => 99.99,
             'category' => 'Armor',
-            'image' => 'item_images/ring.jpg',
+            'image' => 'storage/item_images/ring.jpg',
         ]);
         Item::create([
             'name' => 'Wand',
             'description' => 'A magical staff, you\'re a wizard :username!',
             'price' => 39.99,
             'category' => 'Wand',
-            'image' => 'item_images/wand.jpg',
+            'image' => 'storage/item_images/wand.jpg',
         ]);
         Item::create([
             'name' => 'Healers Kit',
             'description' => 'Healers starter pack',
             'price' => 25,
             'category' => 'Adventure Kit',
-            'image' => 'item_images/Healers_kit.jpg',
+            'image' => 'storage/item_images/Healers_kit.jpg',
         ]);
     }
 }
