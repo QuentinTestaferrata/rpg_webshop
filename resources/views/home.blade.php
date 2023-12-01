@@ -47,130 +47,90 @@
                                 <label for="Adventure_kit" class="form-check-label">Adventure Kits</label>
                             </li>
                         </ul>
-                    </div>
-                                        
+                    </div>                 
                 </div>
-                
-
-
-
             </div>
 
             @php
-                $selectedCategory = request('category', 'all');
+            $selectedCategory = request('category', 'all');
+        @endphp
+
+        @foreach($items as $item)
+            <div class="col-md-3 mb-4">
+                @if (($selectedCategory == 'all') || ($item->category == 'Armor' && $selectedCategory == 'Armor'))
+                    <div class="item-card">
+                        <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $item->name }}</h5>
+                            <p class="card-text">{{ $item->description }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ $item->price }}</p>
+                            <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
+                            <!-- alleen admin -->
+                            @if(Auth::user()->role=='admin')
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal{{$item->id}}">
+                                    Edit
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            </div>
+
+            @php
+                $itemList[] = [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'description' => $item->description,
+                    'price' => $item->price,
+                    'category' => $item->category,
+                    'image' => asset($item->image),
+                ];
             @endphp
 
-            @foreach($items as $item)
-        <div class="col-md-3 mb-4">
-        @if (($selectedCategory == 'all') || ($item->category == 'Armor' && $selectedCategory == 'Armor'))
-            <div class="item-card">
-                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $item->name }}</h5>
-                    <p class="card-text">{{ $item->description }}</p>
-                    <p class="card-text"><strong>Price:</strong> ${{ $item->price }}</p>
-                    <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
-                    
-                    <!-- alleen admin -->
-                    @if(Auth::user()->role=='admin')
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteItemModal{{$item->id}}">
-                            Delete
-                        </button>
-                    
-                        <!-- Delete items -->
-                        <div class="modal fade" id="deleteItemModal{{$item->id}}" tabindex="-1" aria-labelledby="deleteItemModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteItemModalLabel">Confirm Deletion</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete this item?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <form action="{{ route('delete_item', ['id' => $item->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Edit modal for adminsc -->
+            @if(Auth::user()->role=='admin')
+            <div class="modal fade" id="editItemModal{{$item->id}}" tabindex="-1" aria-labelledby="editItemModalLabel{{$item->id}}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editItemModalLabel{{$item->id}}">Edit Item</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                    @endcan
+                        <div class="modal-body">
+                            <p>Are you sure you want to edit this item?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <!-- Redirect naar edit page met item id -->
+                            <a href="{{ url('/edit/' . $item->id) }}" class="btn btn-primary">Edit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        @endif
+            @endif
+        @endforeach
+
+        <!-- itemlist van alle items geconsole logged, later dit gebruiken voor filter feature -->
+        <script>
+            var itemList = @json($itemList);
+            console.log(itemList);
+        </script>
+    
     </div>
-@endforeach
+</div>
 
-        </div>
-    </div>
-
-    <style>
-        body {
-            background-image: url('{{ asset('images/webshop.png') }}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        html, body {
-            height: 120%;
-        }
-    </style>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const filterRadios = document.querySelectorAll('input[name="category"]');
-        const itemCards = document.querySelectorAll('.item-card');
-
-        filterRadios.forEach(function (radio) {
-            radio.addEventListener('change', function () {
-                const selectedCategory = this.id;
-
-                console.log('Category:', selectedCategory);
-                console.log('Filter Radios:', filterRadios);
-                console.log('Item Cards:', itemCards);
-                itemCards.forEach(function (card) {
-                    card.style.display = 'none';
-                });
-
-                // Show filterdcards
-                itemCards.forEach(function (card) {
-                    const cardCategoryElement = card.querySelector('.card-text:last-child');
-                    const cardCategory = cardCategoryElement ? cardCategoryElement.innerText.split(':')[1].trim() : '';
-
-                    const isMatch = selectedCategory === 'all' || cardCategory.toLowerCase().includes(selectedCategory.toLowerCase());
-
-                    console.log('Comparison:', selectedCategory, '===', 'all', '||', selectedCategory, '===', cardCategory.toLowerCase());
-                    console.log('Selected Category:', selectedCategory);
-                    console.log('Card Category:', cardCategory.toLowerCase());
-                    console.log('Comparison Result:', isMatch);
-
-                    if (isMatch) {
-                        card.style.display = 'block';
-
-                    }
-                });
-
-        
-                adjustLayout();
-
-            });
-        });
-    });
-
-function adjustLayout() {
-    const row = document.querySelector('.row');
-    const visibleCards = Array.from(document.querySelectorAll('.item-card[style="display: block;"]'));
-    visibleCards.forEach(function (card) {
-        row.appendChild(card);
-    });
+<style>
+    body {
+        background-image: url('{{ asset('images/webshop.png') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
+    html, body {
+        height: 120%;
+    }
+</style>
 
-    </script>
 
 @endsection
