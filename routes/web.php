@@ -5,6 +5,8 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DeleteItemController;
+use App\Http\Controllers\EditController;
+use App\Http\Controllers\UpdateItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
     Route::delete('/delete_item/{id}', [DeleteItemController::class, 'deleteItem'])->name('delete_item');
+    Route::get('/edit/{id}', [EditController::class, 'show'])->name('edit_item');
+    Route::patch('/update/{id}', [UpdateItemController::class, 'update'])->name('update_item');
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
