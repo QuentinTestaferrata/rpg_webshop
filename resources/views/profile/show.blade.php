@@ -35,6 +35,11 @@
                                 <input type="date" class="form-control" id="birthday" name="birthday" value="{{ $user->birthday }}" readonly>
                             </div>
                             <div class="mb-3">
+                                <label for="aboutme" class="form-label">About me:</label>
+                                <input type="text" class="form-control" id="aboutme" name="aboutme" value="{{ $user->aboutme }}" readonly>
+                            </div>
+                            
+                            <div class="mb-3">
                                 <button type="submit" class="btn btn-success" style="display: none;">Save</button>
                             </div>
                         </form>

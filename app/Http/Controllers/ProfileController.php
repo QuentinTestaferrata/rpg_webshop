@@ -20,12 +20,14 @@ class ProfileController extends Controller
             'email' => 'required|email|max:255',
             'birthday' => 'nullable|date',
             'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'aboutme' => 'nullable|string|max:500',
         ]);
 
         $user->update([
             'name' => $request->input('username'),
             'email' => $request->input('email'),
             'birthday' => $request->input('birthday'),
+            'aboutme' => $request->input('aboutme'),
         ]);
 
         if ($request->hasFile('profile_picture')) {
