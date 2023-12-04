@@ -11,7 +11,7 @@ class DeleteItemController extends Controller
         $item = Item::find($id);
 
         if ($item) 
-    {
+        {
             $item->delete();
             return redirect('/home')->with('success', 'Item deleted successfuly.');
         }

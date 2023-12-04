@@ -7,6 +7,8 @@ use App\Http\Controllers\CreateController;
 use App\Http\Controllers\DeleteItemController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\UpdateItemController;
+use App\Http\Controllers\FAQController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,8 +41,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 ;
 
 //faq
-Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq');
-
+Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq.faq');
+Route::get('/faq_edit', [App\Http\Controllers\FAQController::class, 'editFaqView'])->name('faq.edit_faq');
+Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory'])->name('delete_category');
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
