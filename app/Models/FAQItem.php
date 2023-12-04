@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FAQItem extends Model
 {
+    protected $table = 'faq_items';
     protected $fillable = ['category_id', 'question', 'answer'];
 
     public function category()
