@@ -52,7 +52,7 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- Add FAQ link -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">FAQ</a>
+                                <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                             </li>
 
                             <!-- User dropdown -->
