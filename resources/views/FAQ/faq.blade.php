@@ -3,8 +3,7 @@
 @section('content')
 
     @if(Auth::user()->role=='admin')    
-    <a href="{{ route('create_item') }}" class="btn btn-primary">Add Category</a> 
-    <a href="{{ route('create_item') }}" class="btn btn-primary">Add FAQ item</a>
+    <a href="{{ route('faq.edit_faq') }}" class="btn btn-primary">Edit FAQ</a> 
     @endif
 
 
