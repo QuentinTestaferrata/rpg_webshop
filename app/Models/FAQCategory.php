@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FAQCategory extends Model
 {
+    protected $table = 'faq_categories';
     protected $fillable = ['name'];
 
     public function faqItems()
