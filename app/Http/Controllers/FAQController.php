@@ -57,13 +57,28 @@ class FAQController extends Controller
         return view('faq.edit_faq', compact('categories'));
     }
     public function deleteFaqItem($id)
-{
-    $faqItem = FAQItem::find($id);
+    {
+        $faqItem = FAQItem::find($id);
 
-    if ($faqItem) {
-        $faqItem->delete();
-        $categories = FAQCategory::all();
-        return view('faq.edit_faq', compact('categories'));
+        if ($faqItem) {
+            $faqItem->delete();
+            $categories = FAQCategory::all();
+            return view('faq.edit_faq', compact('categories'));
+        }
     }
-}
+    public function addFaqItem(Request $request, $category_id)
+    {
+        $request->validate([
+            'new_question' => 'required|string|max:255',
+            'new_answer' => 'required|string',
+        ]);
+
+        FAQItem::create([
+            'category_id' => $category_id,
+            'question' => $request->input('new_question'),
+            'answer' => $request->input('new_answer'),
+        ]);
+        $categories = FAQCategory::all();
+        return redirect()->route('faq.edit_faq')->with('success', 'FAQ item added successfully');
+    }
 }

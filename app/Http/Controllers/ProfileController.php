@@ -11,6 +11,9 @@ class ProfileController extends Controller
     {
         return view('profile.show', ['user' => $user]);
     }
+    public function show_edit_profile(User $user){
+        return view('profile.edit_profile', ['user' => $user]);
+    }
 
     public function update(Request $request, User $user)
     {
@@ -36,6 +39,6 @@ class ProfileController extends Controller
             $user->update(['profile_picture' => $path]);
         }
 
-        return redirect()->route('profile.show', $user);
+        return redirect()->route('profile.show', ['user' => $user]);
     }
 }
