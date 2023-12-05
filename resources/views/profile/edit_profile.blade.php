@@ -6,13 +6,18 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header text-center">
-                        <div >
+                        <label for="profilePictureInput">
+                            
                             <div class="profile-picture">
-                                <img id="profilePicturePreview" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : '' }}" >
-                            </div>{{ $user->name }}'s Profile
-                        </div>
+                                
+                                <img id="profilePicturePreview" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : '' }}" alt="Profile Picture">
+                                
+                            </div>
+                            <p>Click above to edit profile picture!</p>
+                        </label>
                         
-                        <a href="{{ route('profile.edit_profile', ['user' => $user]) }}" class="btn btn-primary float-end">Edit</a>
+
+
                     </div>
 
                     <div class="card-body">
@@ -23,21 +28,30 @@
                             <input type="file" id="profilePictureInput" name="profile_picture" accept="image/*" style="display: none;">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username:</label>
-                                <input type="text" class="form-control" id="username" name="username" value="{{ $user->name }}" readonly>
+                                <input type="text" class="form-control" id="username" name="username" value="{{ $user->name }}">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                             </div>
                             
                             <div class="mb-3">
                                 <label for="birthday" class="form-label">Birthday:</label>
-                                <input type="date" class="form-control" id="birthday" name="birthday" value="{{ $user->birthday }}" readonly>
+                                <input type="date" class="form-control" id="birthday" name="birthday" value="{{ $user->birthday }}">
                             </div>
                             <div class="mb-3">
                                 <label for="aboutme" class="form-label">About me:</label>
-                                <input type="text" class="form-control" id="aboutme" name="aboutme" value="{{ $user->aboutme }}" readonly>
+                                <input type="text" class="form-control" id="aboutme" name="aboutme" value="{{ $user->aboutme }}">
                             </div>
+                            
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </div>
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>

@@ -50,12 +50,15 @@
                             @endif
                         @else
                         <ul class="navbar-nav ml-auto">
-                            <!-- Add FAQ link -->
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
                             </li>
 
-                            <!-- User dropdown -->
+                            <!-- User dropdown     -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -64,6 +67,9 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()) }}">
                                         Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('contact.form') }}">
+                                        Contact
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout

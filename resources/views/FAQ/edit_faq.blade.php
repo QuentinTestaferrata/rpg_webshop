@@ -62,6 +62,22 @@
                     </form>
                 </div>
             @endforeach
+            <div class="mb-3">
+                <form method="POST" action="{{ route('add_faq_item', ['category_id' => $category->id]) }}">
+                    @csrf
+                    <strong>Q:</strong>
+                    <input type="text" name="new_question" required>
+                    <br>
+                    <strong>A:</strong>
+                    <textarea name="new_answer" rows="2" required></textarea>
+                    <button type="submit" class="btn btn-success btn-sm">Add Item</button>
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </form>
+            </div>
             <hr>
         @endforeach
     </div>

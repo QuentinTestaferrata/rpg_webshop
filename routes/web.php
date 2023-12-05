@@ -8,7 +8,7 @@ use App\Http\Controllers\DeleteItemController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\UpdateItemController;
 use App\Http\Controllers\FAQController;
-
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,8 +47,17 @@ Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory
 Route::post('/add_category', [FAQController::class, 'addCategory'])->name('add_category');
 Route::put('/faq/edit/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
 Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
+Route::post('/faq/add-item/{category_id}', [FAQController::class, 'addFaqItem'])->name('add_faq_item');
+
+//contact
+Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.form');
+Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
+Route::get('/inquiry/{id}', [ContactController::class, 'showInquiry'])->name('contact.show');
+Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])->name('admin.inquiries');
+Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');
 
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('/profile/edit/{user}', [ProfileController::class, 'show_edit_profile'])->name('profile.edit_profile');
