@@ -44,6 +44,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq.faq');
 Route::get('/faq_edit', [App\Http\Controllers\FAQController::class, 'editFaqView'])->name('faq.edit_faq');
 Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory'])->name('delete_category');
+Route::post('/add_category', [FAQController::class, 'addCategory'])->name('add_category');
+Route::put('/faq/edit/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
+Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
+
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
