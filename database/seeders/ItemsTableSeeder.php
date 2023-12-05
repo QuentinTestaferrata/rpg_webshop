@@ -58,5 +58,19 @@ class ItemsTableSeeder extends Seeder
             'category' => 'Adventure Kit',
             'image' => 'storage/item_images/Healers_kit.jpg',
         ]);
+        Item::create([
+            'name' => 'Wizard hat',
+            'description' => 'Merlin the great wizard\'s hat',
+            'price' => 25,
+            'category' => 'Armor',
+            'image' => 'storage/item_images/wizard_hat.jpg',
+        ]);
+        Item::create([
+            'name' => 'Potion kit',
+            'description' => 'Don\'t try drinking them all at the same time!',
+            'price' => 25,
+            'category' => 'Adventure Kit',
+            'image' => 'storage/item_images/potion_kit.jpg',
+        ]);
     }
 }

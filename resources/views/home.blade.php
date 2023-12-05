@@ -128,7 +128,7 @@
         background-attachment: fixed;
     }
     html, body {
-        height: 100vh;
+        height: 120vh;
     }
 </style>
 
