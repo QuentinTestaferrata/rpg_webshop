@@ -7,12 +7,21 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
+    
     public function showContactForm()
-{
-    return view('contact.form');
-}
-public function submitContactForm(Request $request)
     {
+        $inquiries = Contact::where('username', auth()->user()->name)->get();
+
+        return view('contact.form', compact('inquiries'));
+    }
+    public function deleteInquiry($id)
+    {   
+        $inquiry = Contact::findOrFail($id);
+        $inquiry->delete();
+        return redirect()->route('contact.form')->with('success', 'Inquiry deleted successfully!');
+    }
+    public function submitContactForm(Request $request)
+    {        
         $request->validate([
             'username' => 'required|string',
             'title' => 'required|string',
@@ -41,7 +50,7 @@ public function submitContactForm(Request $request)
     {
         $inquiries = Contact::all();
 
-        return view('admin.inquiries', compact('inquiries'));
+        return view('contact.inquiries', compact('inquiries'));
     }
 
     public function respondToInquiry(Request $request, $id)
@@ -55,7 +64,7 @@ public function submitContactForm(Request $request)
         $inquiry->status = 'resolved'; // Change the status to resolved
         $inquiry->save();
 
-        return redirect()->route('admin.inquiries')->with('success', 'Your response has been sent successfully!');
+        return redirect()->route('contact.inquiries')->with('success', 'Your response has been sent successfully!');
     }
 
 }

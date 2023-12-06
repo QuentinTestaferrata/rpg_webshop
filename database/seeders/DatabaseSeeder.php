@@ -23,6 +23,22 @@ class DatabaseSeeder extends Seeder
              'birthday' => '2000-10-20',
              'role' => 'admin',
          ]);
+         \App\Models\User::factory()->create([
+            'name' => 'Gandalf',
+            'email' => 'user@gmail.com',
+            'password' => 'Qr931768463',
+            'birthday' => '2000-10-20',
+            'role' => 'user',
+            'profile_picture' => 'profile_pictures/gandalf.png',
+            'aboutme' => 'You shall not pass!'
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'Qr931768463',
+            'birthday' => '2000-10-20',
+            'role' => 'admin',
+        ]);
          \App\Models\FAQCategory::create([
             'name' => 'Shipping'
         ]);
@@ -101,7 +117,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Item::create([
             'name' => 'Wizard hat',
             'description' => 'Merlin the great wizard\'s hat',
-            'price' => 25,
+            'price' => 49,
             'category' => 'Armor',
             'image' => 'storage/item_images/wizard_hat.jpg',
         ]);
@@ -111,6 +127,20 @@ class DatabaseSeeder extends Seeder
             'price' => 25,
             'category' => 'Adventure Kit',
             'image' => 'storage/item_images/potion_kit.jpg',
+        ]);
+        \App\Models\Contact::create([
+            'username' => 'Gandalf',
+            'title' => 'Cancel order',
+            'problem' => 'I\'ve ordered a Wand for my best friend Dumbledore, but he never came back from his dungeon :\'(',
+            'response' => 'Don\'t worry i have cancelled your order, I hope your friend comes back.',
+            'status' => 'resolved'
+        ]);
+        \App\Models\Contact::create([
+            'username' => 'Gandalf',
+            'title' => 'Wizard hat ripped!',
+            'problem' => 'This is unacceptable, My wizard hat arrived a bit torn!!! It was pretty pricy, so i expect a new one!',
+            'response' => '',
+            'status' => 'pending'
         ]);
     }
 }

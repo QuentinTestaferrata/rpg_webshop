@@ -32,7 +32,10 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-
+                    <form class="d-flex mx-auto">
+                        <input class="form-control me-2" type="Look for friends" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"></button>
+                    </form>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -68,9 +71,15 @@
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()) }}">
                                         Profile
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('contact.form') }}">
-                                        Contact
-                                    </a>
+                                    @if(Auth::user()->role=='admin')
+                                        <a class="dropdown-item" href="{{ route('admin.inquiries') }}">
+                                            Contact requests
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('contact.form') }}">
+                                            Contact
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
