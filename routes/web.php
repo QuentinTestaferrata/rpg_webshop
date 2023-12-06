@@ -9,6 +9,7 @@ use App\Http\Controllers\EditController;
 use App\Http\Controllers\UpdateItemController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware([AdminMiddleware::class])->group(function () {
+    //Profile
+    Route::post('/profile/make-admin/{user}', [ProfileController::class, 'makeAdmin'])->name('profile.make_admin');
+    Route::match(['post', 'patch'], '/profile/make-user/{user}', [ProfileController::class, 'makeUser'])->name('profile.make_user');
+
+    Route::delete('/profile/delete/{user}', [ProfileController::class, 'deleteUser'])->name('profile.delete_user');
+
+    //all users
+    Route::get('/all_users', [UserController::class, 'showAllUsers'])->name('search.all_users');
+
     //ITEM ROUTES
     Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
@@ -52,6 +62,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //faq
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq.faq');
 
+//search users
+Route::get('/search-users', [UserController::class, 'searchUsers'])->name('search.users');
 
 //contact
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.form');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Controllers\Auth;
+
 
 class ProfileController extends Controller
 {
@@ -15,8 +17,7 @@ class ProfileController extends Controller
         return view('profile.edit_profile', ['user' => $user]);
     }
 
-    public function update(Request $request, User $user)
-    {
+    public function update(Request $request, User $user){
         
         $request->validate([
             'username' => 'required|string|max:255',
@@ -38,7 +39,20 @@ class ProfileController extends Controller
             $path = $file->store('profile_pictures', 'public');
             $user->update(['profile_picture' => $path]);
         }
-
         return redirect()->route('profile.show', ['user' => $user]);
+    }
+
+    public function makeAdmin(User $user){
+        $user->update(['role' => 'admin']);
+        return redirect()->back();
+    }
+    public function makeUser(User $user){
+        $user->update(['role' => 'user']);
+        return redirect()->back();
+    }
+    public function deleteUser(User $user)
+    {
+        $user->delete();
+        return redirect()->route('home');
     }
 }
