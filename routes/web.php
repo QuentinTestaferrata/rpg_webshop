@@ -28,11 +28,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware([AdminMiddleware::class])->group(function () {
+    //ITEM ROUTES
     Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
     Route::delete('/delete_item/{id}', [DeleteItemController::class, 'deleteItem'])->name('delete_item');
     Route::get('/edit/{id}', [EditController::class, 'show'])->name('edit_item');
     Route::patch('/update/{id}', [UpdateItemController::class, 'update'])->name('update_item');
+
+    //FAQ
+    Route::get('/faq_edit', [FAQController::class, 'editFaqView'])->name('faq.edit_faq');
+    Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory'])->name('delete_category');
+    Route::post('/add_category', [FAQController::class, 'addCategory'])->name('add_category');
+    Route::put('/faq/edit/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
+    Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
+    Route::post('/faq/add-item/{category_id}', [FAQController::class, 'addFaqItem'])->name('add_faq_item');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
@@ -42,12 +51,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //faq
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq.faq');
-Route::get('/faq_edit', [App\Http\Controllers\FAQController::class, 'editFaqView'])->name('faq.edit_faq');
-Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory'])->name('delete_category');
-Route::post('/add_category', [FAQController::class, 'addCategory'])->name('add_category');
-Route::put('/faq/edit/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
-Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
-Route::post('/faq/add-item/{category_id}', [FAQController::class, 'addFaqItem'])->name('add_faq_item');
+
 
 //contact
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.form');
@@ -55,6 +59,9 @@ Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('
 Route::get('/inquiry/{id}', [ContactController::class, 'showInquiry'])->name('contact.show');
 Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])->name('admin.inquiries');
 Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');
+Route::get('/user_inquiries', [ContactController::class, 'showUserInquiries'])->name('contact.user_inquiries');
+Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
+
 
 
 //profile page

@@ -43,7 +43,7 @@ class RegisterController extends Controller
 
     /**
      * Get a validator for an incoming registration request.
-     *
+     *à çç!!
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'birthday' => $data['birthday'],
             'password' => Hash::make($data['password']),
-            'role' => 'admin'
+            'role' => 'user'
         ]);
     }
 }

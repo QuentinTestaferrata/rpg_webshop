@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-        <h2>Admin Inquiries</h2>
+        <h2>Contact Panel</h2>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -21,7 +21,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="response">Response:</label>
-                                <textarea name="response" rows="2" class="form-control" required></textarea>
+                                <textarea name="response" rows="2" class="form-control" style="margin-bottom: 10px;" required></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Respond</button>
                         </form>
@@ -29,10 +29,26 @@
                         <h6 class="card-subtitle mb-2 text-success">Resolved</h6>
                         <p class="card-text">Response: {{ $inquiry->response }}</p>
                     @endif
+                    <form method="POST" style="margin-top: 10px;" action="{{ route('inquiry.delete', ['id' => $inquiry->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
                 </div>
             </div>
         @endforeach
     </div>
 
-   
+    <style>
+    body {
+        background-image: url('{{ asset('images/medieval_city.png') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    html, body {
+        height: 100vh;
+    }
+</style>
 @endsection
