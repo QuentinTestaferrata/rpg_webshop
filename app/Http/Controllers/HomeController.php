@@ -33,6 +33,6 @@ class HomeController extends Controller
         return view('home', compact('items'));
     }
     public function about(){
-
+        return view('about');
     }
 }

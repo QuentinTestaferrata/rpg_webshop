@@ -34,10 +34,12 @@
                     </ul>
 
                 <!--searchbar -->
-                <form class="d-flex mx-auto" action="{{ route('search.users') }}" method="GET">
-                    <input name="query" class="form-control me-2" type="text" placeholder="Look for friends" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Go!</button>
-                </form>
+                @if(Auth::check())
+                    <form class="d-flex mx-auto" action="{{ route('search.users') }}" method="GET">
+                        <input name="query" class="form-control me-2" type="text" placeholder="Look for friends" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Go!</button>
+                    </form>
+                @endif
 
                 <!--Right Side Of Navbar-->
                     <ul class="navbar-nav ms-auto">
@@ -87,7 +89,7 @@
                                             User list
                                         </a>
                                     @endif
-                                    <a class="dropdown-item" href="{{ route('search.all_users') }}">
+                                    <a class="dropdown-item" href="{{ route('about') }}">
                                             About
                                         </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

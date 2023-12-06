@@ -11,24 +11,8 @@
                                 <img id="profilePicturePreview" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : '' }}" >
                             </div>{{ $user->name }}'s Profile
                         </div>
-
                         
-                        @if(Auth::user() && $user->id === Auth::user()->id)
-                            <a href="{{ route('profile.edit_profile', ['user' => $user]) }}" class="btn btn-primary float-end">Edit</a>
-                        @endif
-                        @if(Auth::user()->role=='admin')
-                            <form method="POST" action="{{ route('profile.make_admin', ['user' => $user]) }}">
-                                @csrf
-                                <button type="submit" class="btn btn-primary float-end">Make Admin</button>
-                            </form>
-                        @endif
-                        @if(Auth::user()->role=='admin')
-                            <form method="POST" action="{{ route('profile.delete_user', ['user' => $user]) }}" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger float-end">Delete User</button>
-                            </form>
-                        @endif
+                        <a href="{{ route('profile.edit_profile', ['user' => $user]) }}" class="btn btn-primary float-end">Edit</a>
                     </div>
 
                     <div class="card-body">
@@ -41,12 +25,11 @@
                                 <label for="username" class="form-label">Username:</label>
                                 <input type="text" class="form-control" id="username" name="username" value="{{ $user->name }}" readonly>
                             </div>
-                            @if(Auth::user() && $user->id === Auth::user()->id)
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
-                                </div>
-                            @endif
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" readonly>
+                            </div>
+                            
                             <div class="mb-3">
                                 <label for="birthday" class="form-label">Birthday:</label>
                                 <input type="date" class="form-control" id="birthday" name="birthday" value="{{ $user->birthday }}" readonly>
@@ -66,8 +49,8 @@
 
     <style>
         .profile-picture {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             background-color: #ccc;
             border-radius: 50%;
             margin: 0 auto;
