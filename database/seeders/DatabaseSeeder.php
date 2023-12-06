@@ -15,16 +15,25 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
          //\App\Models\User::factory(10)->create();
-
          \App\Models\User::factory()->create([
-             'name' => 'admin',
+            'name' => 'Quentin',
+            'email' => 'admin@gmail.com',
+            'password' => 'Qr931768463',
+            'birthday' => '2000-10-20',
+            'profile_picture' => 'profile_pictures/me.png',
+            'role' => 'admin',
+        ]);
+         \App\Models\User::factory()->create([
+             'name' => 'Admin',
              'email' => 'admin@ehb.be',
              'password' => 'Password!321',
              'birthday' => '2000-10-20',
+             'profile_picture' => 'profile_pictures/admin.png',
              'role' => 'admin',
          ]);
+
          \App\Models\User::factory()->create([
-            'name' => 'Gandalf',
+            'name' => 'Gandalf The Gray',
             'email' => 'user@gmail.com',
             'password' => 'Qr931768463',
             'birthday' => '2000-10-20',
@@ -33,11 +42,23 @@ class DatabaseSeeder extends Seeder
             'aboutme' => 'You shall not pass!'
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Gandalf The White',
+            'email' => 'user1@gmail.com',
             'password' => 'Qr931768463',
             'birthday' => '2000-10-20',
-            'role' => 'admin',
+            'role' => 'user',
+            'profile_picture' => 'profile_pictures/gandalfwhite.png',
+            'aboutme' => 'A wizard is never late, nor is he early, he arrives precisely when he means to.'
+        ]);
+        
+        \App\Models\User::factory()->create([
+            'name' => 'Legolas',
+            'email' => 'user2@gmail.com',
+            'password' => 'Password!321',
+            'birthday' => '2000-10-20',
+            'role' => 'user',
+            'profile_picture' => 'profile_pictures/legolas.png',
+            'aboutme' => 'I\'ve only created this account because i lost my bow and need a new one...'
         ]);
          \App\Models\FAQCategory::create([
             'name' => 'Shipping'

@@ -56,8 +56,7 @@ class FAQController extends Controller
         $categories = FAQCategory::all();
         return view('faq.edit_faq', compact('categories'));
     }
-    public function deleteFaqItem($id)
-    {
+    public function deleteFaqItem($id){
         $faqItem = FAQItem::find($id);
 
         if ($faqItem) {
@@ -66,8 +65,7 @@ class FAQController extends Controller
             return view('faq.edit_faq', compact('categories'));
         }
     }
-    public function addFaqItem(Request $request, $category_id)
-    {
+    public function addFaqItem(Request $request, $category_id){
         $request->validate([
             'new_question' => 'required|string|max:255',
             'new_answer' => 'required|string',

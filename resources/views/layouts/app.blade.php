@@ -21,24 +21,26 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    Fantasy Forge
+                <img src="{{ asset('images/FantasyForgeNav.png') }}" alt="Fantasy Forge Logo" style="max-height: 30px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                <!--left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-                    <form class="d-flex mx-auto">
-                        <input class="form-control me-2" type="Look for friends" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit"></button>
-                    </form>
-                    <!-- Right Side Of Navbar -->
+
+                <!--searchbar -->
+                <form class="d-flex mx-auto" action="{{ route('search.users') }}" method="GET">
+                    <input name="query" class="form-control me-2" type="text" placeholder="Look for friends" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Go!</button>
+                </form>
+
+                <!--Right Side Of Navbar-->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -78,6 +80,11 @@
                                     @else
                                         <a class="dropdown-item" href="{{ route('contact.form') }}">
                                             Contact
+                                        </a>
+                                    @endif
+                                    @if(Auth::user()->role=='admin')
+                                        <a class="dropdown-item" href="{{ route('search.all_users') }}">
+                                            User list
                                         </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
