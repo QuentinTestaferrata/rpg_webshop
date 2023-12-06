@@ -65,6 +65,7 @@
                             <p class="card-text">{{ $item->description }}</p>
                             <p class="card-text"><strong>Price:</strong> ${{ $item->price }}</p>
                             <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
+                            <p class="card-text"><strong>publish date:</strong> {{ $item->created_at }}</p>
                             <!-- alleen admin -->
                             @if(Auth::user()->role=='admin')
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal{{$item->id}}">

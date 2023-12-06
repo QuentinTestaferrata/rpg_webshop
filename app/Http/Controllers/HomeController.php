@@ -22,8 +22,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index(){
         $items = Item::all();
         $user = auth()->user();
 
@@ -32,5 +31,8 @@ class HomeController extends Controller
             return $item;
         });
         return view('home', compact('items'));
+    }
+    public function about(){
+
     }
 }

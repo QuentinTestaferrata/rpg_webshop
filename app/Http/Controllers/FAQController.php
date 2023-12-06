@@ -41,6 +41,25 @@ class FAQController extends Controller
         $categories = FAQCategory::all();
         return view('faq.edit_faq', compact('categories'));
     }
+    public function updateFaqCategory(Request $request, $id){
+        $request->validate([
+            'name' => 'required|string|max:255'
+        ]);
+    
+        $faqCategory = FAQCategory::find($id);
+    
+        if ($faqCategory) {
+            $faqCategory->update([
+                'name' => $request->input('name')
+            ]);
+    
+            $categories = FAQCategory::all();
+            return view('faq.edit_faq', compact('categories'));
+        }
+    
+        // Handle the case where the FAQ category is not found
+        return redirect()->route('faq.edit_faq')->with('error', 'FAQ category not found.');
+    }
     public function updateFaqItem(Request $request, $id)
     {
         $request->validate([
