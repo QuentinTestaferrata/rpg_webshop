@@ -1,39 +1,44 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h2>Categories:</h2>
-        </div>
-        <div class="col text-right">
-            <form method="POST" action="{{ route('add_category') }}" class="form-inline">
-                @csrf
-                <div class="form-group mx-sm-3 mb-2">
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Add Category
-                    <input type="text" class="form-control" id="categoryInput" name="category_name" placeholder="Enter category name" required>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    @foreach($categories as $category)
-        <div class="row" style="margin-left: 20px;">
+    <div class="container">
+        <div class="row">
             <div class="col">
-                <h3>{{$category->name}}</h3>
+                <h2>Categories:</h2>
             </div>
-            <div class="col">
-                <form method="POST" action="{{ route('delete_category', ['id' => $category->id]) }}" class="mt-3">
+            <div class="col text-right">
+                <form method="POST" action="{{ route('add_category') }}" class="form-inline">
                     @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">
-                        {{ __('Delete Category') }} '{{$category->name}}'
-                    </button>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <button type="submit" class="btn btn-primary mb-2">Add Category
+                            <input type="text" class="form-control" id="categoryInput" name="category_name" placeholder="Enter category name" required>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
-    @endforeach
+
+        @foreach($categories as $category)
+            <div class="row" style="margin-left: 20px;">
+                <div class="col">
+                    <form method="POST" action="{{ route('update_faq_category', ['id' => $category->id]) }}" class="d-inline">
+                        @csrf
+                        @method('PUT')
+                        <textarea name="name" rows="1" required>{{ $category->name }}</textarea>                    
+                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    </form>
+                </div>
+                <div class="col">
+                    <form method="POST" action="{{ route('delete_category', ['id' => $category->id]) }}" class="mt-3">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">
+                            {{ __('Delete Category') }} '{{$category->name}}'
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
 
 
     

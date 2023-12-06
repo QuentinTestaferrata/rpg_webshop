@@ -49,10 +49,11 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/faq_edit', [FAQController::class, 'editFaqView'])->name('faq.edit_faq');
     Route::delete('/delete_category/{id}', [FAQController::class, 'deleteFAQCategory'])->name('delete_category');
     Route::post('/add_category', [FAQController::class, 'addCategory'])->name('add_category');
-    Route::put('/faq/edit/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
+    Route::put('/faq/edit_item/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
     Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
     Route::post('/faq/add-item/{category_id}', [FAQController::class, 'addFaqItem'])->name('add_faq_item');
 });
+Route::put('/faq/edit_category/{id}', [FAQController::class, 'updateFaqCategory'])->name('update_faq_category');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
 //->name('home')
