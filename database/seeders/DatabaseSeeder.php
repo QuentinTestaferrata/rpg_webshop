@@ -13,13 +13,17 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-         //\App\Models\User::factory(10)->create();
+    {//\App\Models\User::factory(10)->create();
+         
+/////////
+//USERS//
+/////////
+
          \App\Models\User::factory()->create([
             'name' => 'Quentin',
             'email' => 'admin@gmail.com',
             'password' => 'Qr931768463',
-            'birthday' => '2000-10-20',
+            'birthday' => '2000-10-10',
             'profile_picture' => 'profile_pictures/me.png',
             'role' => 'admin',
         ]);
@@ -27,7 +31,7 @@ class DatabaseSeeder extends Seeder
              'name' => 'Admin',
              'email' => 'admin@ehb.be',
              'password' => 'Password!321',
-             'birthday' => '2000-10-20',
+             'birthday' => '2000-10-10',
              'profile_picture' => 'profile_pictures/admin.png',
              'role' => 'admin',
          ]);
@@ -36,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gandalf The Gray',
             'email' => 'user@gmail.com',
             'password' => 'Qr931768463',
-            'birthday' => '2000-10-20',
+            'birthday' => '2000-10-10',
             'role' => 'user',
             'profile_picture' => 'profile_pictures/gandalf.png',
             'aboutme' => 'You shall not pass!'
@@ -45,21 +49,34 @@ class DatabaseSeeder extends Seeder
             'name' => 'Gandalf The White',
             'email' => 'user1@gmail.com',
             'password' => 'Qr931768463',
-            'birthday' => '2000-10-20',
+            'birthday' => '2000-10-10',
             'role' => 'user',
             'profile_picture' => 'profile_pictures/gandalfwhite.png',
             'aboutme' => 'A wizard is never late, nor is he early, he arrives precisely when he means to.'
         ]);
-        
         \App\Models\User::factory()->create([
             'name' => 'Legolas',
             'email' => 'user2@gmail.com',
             'password' => 'Password!321',
-            'birthday' => '2000-10-20',
+            'birthday' => '2000-10-10',
             'role' => 'user',
             'profile_picture' => 'profile_pictures/legolas.png',
             'aboutme' => 'I\'ve only created this account because i lost my bow and need a new one...'
         ]);
+        \App\Models\User::factory()->create([
+            'name' => 'The Lich King',
+            'email' => 'user3@gmail.com',
+            'password' => 'Password!321',
+            'birthday' => '2000-10-10',
+            'role' => 'user',
+            'profile_picture' => 'profile_pictures/lichking.png',
+            'aboutme' => 'Frostmourne hungers.'
+        ]);
+        
+//////////////////
+//FAQ CATEGORIES//
+//////////////////
+
          \App\Models\FAQCategory::create([
             'name' => 'Shipping'
         ]);
@@ -69,7 +86,10 @@ class DatabaseSeeder extends Seeder
         $shippingCategory = \App\Models\FAQCategory::where('name', 'Shipping')->first();
         $paymentCategory = \App\Models\FAQCategory::where('name', 'Payment')->first();
 
-        // Seed FAQ items
+/////////////
+//FAQ items//
+/////////////
+
         \App\Models\FAQItem::create([
             'category_id' => $shippingCategory->id,
             'question' => 'Do you also ship your items oversea?',
@@ -90,7 +110,11 @@ class DatabaseSeeder extends Seeder
             'question' => 'Can i go on a payment plan?',
             'answer' => 'No, if you can\'t afford the item, we won\'t sell it.',
         ]);
-        // Health Potion
+
+//////////////
+//SHOP ITEMS//
+//////////////
+
         \App\Models\Item::create([
             'name' => 'Health Potion',
             'description' => 'Restores health... Get stronger.',
@@ -98,7 +122,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'Potion',
             'image' => 'storage/item_images/health_potion.jpg',
         ]);
-        // Sword
         \App\Models\Item::create([
             'name' => 'Sword of Power',
             'description' => 'A long sword to compensate for other stuff.',
@@ -106,7 +129,6 @@ class DatabaseSeeder extends Seeder
             'category' => 'Sword',
             'image' => 'storage/item_images/sword.jpg',
         ]);
-        // Helmet
         \App\Models\Item::create([
             'name' => 'Steel Helmet',
             'description' => 'A helmet to protect your empty head.',
@@ -149,6 +171,11 @@ class DatabaseSeeder extends Seeder
             'category' => 'Adventure Kit',
             'image' => 'storage/item_images/potion_kit.jpg',
         ]);
+
+///////////
+//CONTACT//
+///////////
+
         \App\Models\Contact::create([
             'username' => 'Gandalf',
             'title' => 'Cancel order',
@@ -162,6 +189,13 @@ class DatabaseSeeder extends Seeder
             'problem' => 'This is unacceptable, My wizard hat arrived a bit torn!!! It was pretty pricy, so i expect a new one!',
             'response' => '',
             'status' => 'pending'
+        ]);
+        \App\Models\Contact::create([
+            'username' => 'The Lich King',
+            'title' => 'Reparation',
+            'problem' => 'I\'ve hit my enemies too hard, now Frostmourne is fissured, can you please repair it?',
+            'response' => 'No sorry! We do not repair broken items if they don\'t come from our shop.',
+            'status' => 'resolved'
         ]);
     }
 }

@@ -82,4 +82,18 @@
         </div>
     </div>
 </div>
+
+<style>
+    body {
+        background-image: url('{{ asset('images/library.png') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    html, body {
+        height: 100%;
+    }
+</style>
+
 @endsection

@@ -55,4 +55,9 @@ class ProfileController extends Controller
         $user->delete();
         return redirect()->route('home');
     }
+    public function deleteUserFromUserList(User $user)
+    {
+        $user->delete();
+        return redirect()->route('search.all_users');
+    }
 }

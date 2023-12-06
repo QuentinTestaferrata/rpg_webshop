@@ -37,7 +37,9 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 
     //all users
     Route::get('/all_users', [UserController::class, 'showAllUsers'])->name('search.all_users');
+    Route::delete('/profile/delete/{user}', [ProfileController::class, 'deleteUserFromUserList'])->name('profile.delete_user_from_list');
 
+    
     //ITEM ROUTES
     Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
@@ -59,6 +61,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //->name('home')
 //->middleware(AdminMiddleware::class)
 ;
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 
 //faq
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'faqView'])->name('faq.faq');

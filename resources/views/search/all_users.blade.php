@@ -33,7 +33,7 @@
                         <td>{{ $user->role }}</td>
                         <td>
                             @if(Auth::user()->role=='admin' && $user->role != 'admin')
-                                <form method="POST" action="{{ route('profile.delete_user', ['user' => $user]) }}" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                <form method="POST" action="{{ route('profile.delete_user_from_list', ['user' => $user]) }}" onsubmit="return confirm('Are you sure you want to delete this user?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete User</button>
@@ -56,7 +56,7 @@
                         </td>
                     </tr>
                 @endforeach
-            </tbody>
+            </body>
         </table>
     </div>
 @endsection
