@@ -17,6 +17,9 @@
                     <p class="card-text">{{ $inquiry->problem }}</p>
 
                     @if ($inquiry->status == 'pending')
+                            <div style="color: #FFA500;">
+                            <h6 style= class="card-subtitle mb-2 text-success"><strong>Status: pending</strong></h6>
+                        </div>
                         <form method="POST" action="{{ route('admin.inquiries.respond', ['id' => $inquiry->id]) }}">
                             @csrf
                             <div class="form-group">
