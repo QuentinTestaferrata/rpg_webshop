@@ -47,6 +47,7 @@
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-success">Save</button>
                             </div>
+                            <a href="{{ route('profile.show', Auth::user()) }}"" class="btn ">Cancel</a>
                             @if (session('success'))
                                 <div class="alert alert-success">
                                     {{ session('success') }}

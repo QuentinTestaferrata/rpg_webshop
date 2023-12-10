@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('quest', function (Blueprint $table) {
+        Schema::create('quests', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('reward');
+            $table->integer('reward');
             $table->integer('duration');
-            $table->string('status');
+            $table->string('status')->default('available'); ;
             $table->timestamps();
             $table->unsignedBigInteger('active_user_id')->nullable();
+            $table->boolean('rewarded')->default(false);
 
             $table->foreign('active_user_id')->references('id')->on('users')->onDelete('set null');
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quest');
+        Schema::dropIfExists('quests');
     }
 };
