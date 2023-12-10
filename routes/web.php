@@ -77,8 +77,7 @@ Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])
 Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');
 Route::get('/user_inquiries', [ContactController::class, 'showUserInquiries'])->name('contact.user_inquiries');
 Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
-
-
+Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteUserInquiry'])->name('inquiry.user.delete');
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');

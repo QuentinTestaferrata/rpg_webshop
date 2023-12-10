@@ -36,7 +36,7 @@
                     <p class="card-text">Response: {{ $inquiry->response }}</p>
                     <h6 style="color: #006400;" class="card-subtitle mb-2 text-success"><strong>Status: Resolved</strong></h6>
                 @endif
-                <form method="POST" action="{{ route('inquiry.delete', ['id' => $inquiry->id]) }}">
+                <form method="POST" action="{{ route('inquiry.user.delete', ['id' => $inquiry->id]) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

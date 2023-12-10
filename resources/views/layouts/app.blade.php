@@ -28,9 +28,11 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!--left Side Of Navbar -->
+                <!--left Side Of Navbar  -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Adventure</a>
+                        </li>
                     </ul>
 
                 <!--searchbar -->
@@ -58,6 +60,9 @@
                         @else
                         <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                                <a class="nav-link">Pouch: {{ Auth::user()->balance }}$</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
                             

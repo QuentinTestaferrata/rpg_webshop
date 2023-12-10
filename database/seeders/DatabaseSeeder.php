@@ -177,14 +177,14 @@ class DatabaseSeeder extends Seeder
 ///////////
 
         \App\Models\Contact::create([
-            'username' => 'Gandalf',
+            'username' => 'Gandalf The Gray',
             'title' => 'Cancel order',
             'problem' => 'I\'ve ordered a Wand for my best friend Dumbledore, but he never came back from his dungeon :\'(',
             'response' => 'Don\'t worry i have cancelled your order, I hope your friend comes back.',
             'status' => 'resolved'
         ]);
         \App\Models\Contact::create([
-            'username' => 'Gandalf',
+            'username' => 'Gandalf The Gray',
             'title' => 'Wizard hat ripped!',
             'problem' => 'This is unacceptable, My wizard hat arrived a bit torn!!! It was pretty pricy, so i expect a new one!',
             'response' => '',

@@ -18,6 +18,12 @@ class ContactController extends Controller
     {   
         $inquiry = Contact::findOrFail($id);
         $inquiry->delete();
+        return redirect()->route('admin.inquiries')->with('success', 'Inquiry deleted successfully!');
+    }
+    public function deleteUserInquiry($id)
+    {   
+        $inquiry = Contact::findOrFail($id);
+        $inquiry->delete();
         return redirect()->route('contact.form')->with('success', 'Inquiry deleted successfully!');
     }
     public function submitContactForm(Request $request)
@@ -28,12 +34,11 @@ class ContactController extends Controller
             'problem' => 'required|string',
         ]);
 
-        // Save the contact form data to the database
         $contact = Contact::create([
             'username' => $request->input('username'),
             'title' => $request->input('title'),
             'problem' => $request->input('problem'),
-            'status' => 'pending', // You can add a 'status' field for pending or resolved
+            'status' => 'pending', 
         ]);
 
         return redirect()->route('contact.show', ['id' => $contact->id])->with('success', 'Your inquiry has been submitted successfully!');
@@ -64,7 +69,7 @@ class ContactController extends Controller
         $inquiry->status = 'resolved'; // Change the status to resolved
         $inquiry->save();
 
-        return redirect()->route('contact.inquiries')->with('success', 'Your response has been sent successfully!');
+        return redirect()->route('admin.inquiries')->with('success', 'Your response has been sent successfully!');
     }
 
 }
