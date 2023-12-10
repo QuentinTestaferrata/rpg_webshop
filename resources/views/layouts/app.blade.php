@@ -31,7 +31,7 @@
                 <!--left Side Of Navbar  -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Adventure</a>
+                            <a class="nav-link" href="{{ route('quests.show') }}">Adventure</a>
                         </li>
                     </ul>
 

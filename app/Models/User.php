@@ -28,7 +28,10 @@ class User extends Authenticatable //implements MustVerifyEmail
         'aboutme',
         'role',
     ];
-
+    public function quests()
+    {
+        return $this->hasMany(Quest::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

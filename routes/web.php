@@ -10,6 +10,7 @@ use App\Http\Controllers\UpdateItemController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,11 @@ Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respond
 Route::get('/user_inquiries', [ContactController::class, 'showUserInquiries'])->name('contact.user_inquiries');
 Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
 Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteUserInquiry'])->name('inquiry.user.delete');
+
+//Quests
+Route::get('/quests', [QuestController::class, 'showQuestBoard'])->name('quests.show');
+Route::get('/create_quest', [QuestController::class, 'createQuest'])->name('quest.create');
+
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
