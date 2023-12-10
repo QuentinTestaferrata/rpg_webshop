@@ -46,7 +46,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
     Route::delete('/delete_item/{id}', [DeleteItemController::class, 'deleteItem'])->name('delete_item');
     Route::get('/edit/{id}', [EditController::class, 'show'])->name('edit_item');
-    Route::patch('/update/{id}', [UpdateItemController::class, 'update'])->name('update_item');
+    Route::patch('/update/{id}', [UpdateItemController::class, 'update'])->name('update_item'); //HERE
 
     //FAQ
     Route::get('/faq_edit', [FAQController::class, 'editFaqView'])->name('faq.edit_faq');
@@ -77,12 +77,18 @@ Route::get('/inquiry/{id}', [ContactController::class, 'showInquiry'])->name('co
 Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])->name('admin.inquiries');
 Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');
 Route::get('/user_inquiries', [ContactController::class, 'showUserInquiries'])->name('contact.user_inquiries');
-Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
+Route::delete('/inquiry/delete_admin/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
 Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteUserInquiry'])->name('inquiry.user.delete');
 
 //Quests
 Route::get('/quests', [QuestController::class, 'showQuestBoard'])->name('quests.show');
+Route::get('/my_quests', [QuestController::class, 'showMyQuests'])->name('my_quests.show');
 Route::get('/create_quest', [QuestController::class, 'createQuest'])->name('quest.create');
+Route::post('/quests', [QuestController::class, 'makeQuest'])->name('quests.create_quest');
+Route::get('/quests/accept/{id}', [QuestController::class, 'acceptQuest'])->name('quests.accept');
+Route::post('/quests/claim/{id}', [QuestController::class, 'claimReward'])->name('quests.claim');
+Route::delete('/quests/delete/{id}', [QuestController::class, 'deleteQuest'])->name('quests.delete');
+
 
 
 //profile page

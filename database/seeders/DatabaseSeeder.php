@@ -197,5 +197,38 @@ class DatabaseSeeder extends Seeder
             'response' => 'No sorry! We do not repair broken items if they don\'t come from our shop.',
             'status' => 'resolved'
         ]);
+
+/////////
+//Quest//
+/////////
+        \App\Models\Quest::create([
+            'name' => 'Kill the wolf',
+            'description' => 'There is a huge wolf terrorizing a nearby village, bring me the head back and to collect your reward!',
+            'reward' => 450,
+            'duration' => 50,
+            'status' => 'available'
+        ]);
+        \App\Models\Quest::create([
+            'name' => 'Lost cat',
+            'description' => 'An old woman has lost her cat, it has black and white fur, and lost an eye, find it to collect the reward!',
+            'reward' => 10,
+            'duration' => 1,
+            'status' => 'available'
+        ]);
+        \App\Models\Quest::create([
+            'name' => 'Potion brewer',
+            'description' => 'We ran out of invisibility potion, bring us 10 potions and you shall receive a reward!',
+            'reward' => 50,
+            'duration' => 5,
+            'status' => 'available'
+        ]);
+            \App\Models\Quest::create([
+            'name' => 'Kill the Ender Dragon',
+            'description' => 'Go to the end using an End Portal and slay the Ender Dragon! Bring back it\'s egg and you will receive a huge reward!',
+            'reward' => 99000,
+            'duration' => 1,
+            'status' => 'accepted',
+            'active_user_id' => 2
+        ]);
     }
 }

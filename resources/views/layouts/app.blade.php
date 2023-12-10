@@ -31,7 +31,7 @@
                 <!--left Side Of Navbar  -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('quests.show') }}">Adventure</a>
+                            <a class="nav-link" href="{{ route('quests.show') }}">Adventures</a>
                         </li>
                     </ul>
 
@@ -80,30 +80,37 @@
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()) }}">
                                         Profile
                                     </a>
-                                    @if(Auth::user()->role=='admin')
-                                        <a class="dropdown-item" href="{{ route('admin.inquiries') }}">
-                                            Contact requests
-                                        </a>
-                                    @else
+                                    @if(Auth::user()->role=='user')
                                         <a class="dropdown-item" href="{{ route('contact.form') }}">
                                             Contact
                                         </a>
                                     @endif
-                                    @if(Auth::user()->role=='admin')
-                                        <a class="dropdown-item" href="{{ route('search.all_users') }}">
-                                            User list
-                                        </a>
-                                    @endif
+                                    <a class="dropdown-item" href="{{ route('my_quests.show') }}">
+                                        My Quests
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('about') }}">
-                                            About
-                                        </a>
+                                        About
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    @if(Auth::user()->role=='admin')
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown-header">Admin Options</div>
+                                        <a class="dropdown-item" href="{{ route('search.all_users') }}">
+                                            User List
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('quest.create') }}">
+                                            Create Quests
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('admin.inquiries') }}">
+                                            Contact Requests
+                                        </a>
+                                    @endif
+                                    
                                 </div>
                             </li>
                         </ul>
