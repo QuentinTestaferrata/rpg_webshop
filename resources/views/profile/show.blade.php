@@ -68,7 +68,7 @@
             display: none;
         }
         body {
-            background-image: url('{{ asset('images/profilepicture.png') }}');
+            background-image: url('{{ asset('storage/images/profilepicture.png') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

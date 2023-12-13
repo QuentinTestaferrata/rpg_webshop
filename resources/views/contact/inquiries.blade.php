@@ -44,7 +44,7 @@
 
     <style>
     body {
-        background-image: url('{{ asset('images/medieval_city.png') }}');
+        background-image: url('{{ asset('storage/images/medieval_city.png') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

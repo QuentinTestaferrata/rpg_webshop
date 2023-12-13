@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                <img src="{{ asset('images/FantasyForgeNav.png') }}" alt="Fantasy Forge Logo" style="max-height: 30px;">
+                <img src="{{ asset('storage/images/FantasyForgeNav.png') }}" alt="Fantasy Forge Logo" style="max-height: 30px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

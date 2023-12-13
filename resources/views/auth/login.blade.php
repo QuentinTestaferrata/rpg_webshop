@@ -73,7 +73,7 @@
 
 <style>
     body {
-        background-image: url('{{ asset('images/library.png') }}');
+        background-image: url('{{ asset('storage/images/library.png') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

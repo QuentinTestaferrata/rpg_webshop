@@ -50,7 +50,7 @@
 
     <style>
         body {
-            background-image: url('{{ asset('images/adventure.png') }}');
+            background-image: url('{{ asset('/storage/images/adventure.png') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

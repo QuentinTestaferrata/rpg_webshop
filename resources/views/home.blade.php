@@ -122,7 +122,7 @@
 
 <style>
     body {
-        background-image: url('{{ asset('images/webshop.png') }}');
+        background-image: url('{{ asset('storage/images/webshop.png') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
