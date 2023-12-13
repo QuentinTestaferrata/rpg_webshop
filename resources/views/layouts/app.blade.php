@@ -26,17 +26,16 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--left Side Of Navbar  -->
+                @if(Auth::check())
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('quests.show') }}">Adventures</a>
                         </li>
                     </ul>
-
-                <!--searchbar -->
-                @if(Auth::check())
+                    <!--searchbar -->
                     <form class="d-flex mx-auto" action="{{ route('search.users') }}" method="GET">
                         <input name="query" class="form-control me-2" type="text" placeholder="Look for friends" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Go!</button>
