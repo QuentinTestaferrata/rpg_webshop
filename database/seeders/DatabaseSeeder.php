@@ -166,7 +166,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Item::create([
             'name' => 'Potion kit',
-            'description' => 'Don\'t try drinking them all at the same time!',
+            'description' => 'Don\'t drink them all at the same time!',
             'price' => 25,
             'category' => 'Adventure Kit',
             'image' => 'storage/item_images/potion_kit.jpg',

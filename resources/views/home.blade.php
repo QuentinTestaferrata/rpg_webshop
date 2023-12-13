@@ -60,15 +60,15 @@
                 @if (($selectedCategory == 'all') || ($item->category == 'Armor' && $selectedCategory == 'Armor'))
                     <div class="item-card">
                         <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->name }}</h5>
+                        <div class="card-body" style="padding: 10px;">
+                            <h5 class="card-title"><strong>{{ $item->name }}</strong></h5>
                             <p class="card-text">{{ $item->description }}</p>
                             <p class="card-text"><strong>Price:</strong> ${{ $item->price }}</p>
                             <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
                             <p class="card-text"><strong>publish date:</strong> {{ $item->created_at }}</p>
                             <!-- alleen admin -->
                             @if(Auth::user()->role=='admin')
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editItemModal{{$item->id}}">
+                                <button class="btn btn-danger justify-content-end" data-bs-toggle="modal" data-bs-target="#editItemModal{{$item->id}}">
                                     Edit
                                 </button>
                             @endif
@@ -129,7 +129,7 @@
         background-attachment: fixed;
     }
     html, body {
-        height: 130vh;
+        height: 100%;
     }
 </style>
 
