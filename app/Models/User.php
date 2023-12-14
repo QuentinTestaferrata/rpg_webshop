@@ -32,6 +32,9 @@ class User extends Authenticatable //implements MustVerifyEmail
     {
         return $this->hasMany(Quest::class);
     }
+    public function inventory(){
+        return $this->hasOne(Inventory::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -67,6 +67,9 @@
                             <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
                             <p class="card-text"><strong>publish date:</strong> {{ $item->created_at }}</p>
                             <!-- alleen admin -->
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyItemModal{{$item->id}}">
+                                Buy
+                            </button>
                             @if(Auth::user()->role=='admin')
                                 <button class="btn btn-danger justify-content-end" data-bs-toggle="modal" data-bs-target="#editItemModal{{$item->id}}">
                                     Edit
@@ -110,6 +113,33 @@
             </div>
             @endif
         @endforeach
+
+
+        @foreach($items as $item)
+    <div class="modal fade" id="buyItemModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="buyItemModalLabel{{$item->id}}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="buyItemModalLabel{{$item->id}}">Confirm Purchase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to buy {{ $item->name }}?</p>
+                    <!-- You can add input for quantity here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <!-- Add a form to handle the purchase -->
+                    <form method="post" action="{{ route('purchase', ['item_id' => $item->id]) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Buy</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
 
         <!-- itemlist van alle items geconsole logged, later dit gebruiken voor filter feature -->
         <script>
