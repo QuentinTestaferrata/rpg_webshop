@@ -97,7 +97,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editItemModalLabel{{$item->id}}">Edit Item</h5>
+                            <h5 class="modal-title" id="editItemModalLabel{{$item->²²id}}">Edit Item</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -116,23 +116,42 @@
 
 
         @foreach($items as $item)
-    <div class="modal fade" id="buyItemModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="buyItemModalLabel{{$item->id}}" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="buyItemModalLabel{{$item->id}}">Confirm Purchase</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+        @php
+            $user = Auth::user();
+        @endphp
+            <div class="modal fade" id="buyItemModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="buyItemModalLabel{{$item->id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="buyItemModalLabel{{$item->id}}">Confirm Purchase</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
                     <p>Are you sure you want to buy {{ $item->name }}?</p>
-                    <!-- You can add input for quantity here -->
+                    
+                    <label for="quantity{{$item->id}}" class="form-label">Quantity:</label>
+                    <input type="number" class="form-control" id="quantity{{$item->id}}" name="quantity" value="1" min="1" onchange="updateDetails({{$item->price}}, {{$user->balance}}, {{$item->id}})">
+                    
+                    <p class="total"><strong>Total Price:</strong> $<span id="totalPrice{{$item->id}}">{{$item->price}}</span></p>
+
+                    <p><strong>User Balance:</strong> ${{ $user->balance }}</p>
+                    <hr>
+                    <p>
+                        @php
+                            $newBalance = $user->balance - ($item->price * 1); // Assuming quantity is 1
+                            $balanceColor = $newBalance < 0 ? 'red' : 'green';
+                        @endphp
+                        <p>
+                        <strong>New User Balance:</strong> 
+                        <span id="newBalance{{$item->id}}" style="color: {{ $balanceColor }}"><strong>{{ $newBalance }}$</strong></span>
+                        </p>
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <!-- Add a form to handle the purchase -->
                     <form method="post" action="{{ route('purchase', ['item_id' => $item->id]) }}">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Buy</button>
+                        <button id="buyButton{{$item->id}}" type="submit" class="btn btn-primary" @if($newBalance < 0) disabled @endif>Buy</button>
                     </form>
                 </div>
             </div>
@@ -140,12 +159,38 @@
     </div>
 @endforeach
 
+<!-- itemlist van alle items geconsole logged, later dit gebruiken voor filter feature -->
+<script>
+    function updateDetails(itemPrice, initialBalance, itemId) {
+        // Get the selected quantity
+        var quantity = document.getElementById('quantity' + itemId).value;
 
-        <!-- itemlist van alle items geconsole logged, later dit gebruiken voor filter feature -->
-        <script>
-            var itemList = @json($itemList);
-            console.log(itemList);
-        </script>
+        // Calculate the total price
+        var totalPrice = itemPrice * quantity;
+
+        // Update the total price in the modal
+        document.getElementById('totalPrice' + itemId).innerText = totalPrice;
+
+        // Calculate the new balance
+        var newBalance = initialBalance - totalPrice;
+
+        // Determine the initial color based on the new balance
+        var initialColor = newBalance < 0 ? 'red' : 'green';
+
+        // Update the new balance and its color in the modal
+        document.getElementById('newBalance' + itemId).innerHTML = '<strong>' + newBalance + '$</strong>';
+        document.getElementById('newBalance' + itemId).style.color = initialColor;
+
+        // Disable the button if the new balance is negative
+        var buyButton = document.getElementById('buyButton' + itemId);
+        if (newBalance < 0) {
+            buyButton.setAttribute('disabled', 'disabled');
+        } else {
+            buyButton.removeAttribute('disabled');
+        }
+    }
+</script>
+
     
     </div>
 </div>
@@ -160,6 +205,12 @@
     }
     html, body {
         height: 100%;
+    }
+    hr {
+        width: 40%;
+    }
+    .total{
+        padding-top: 30px;
     }
 </style>
 
