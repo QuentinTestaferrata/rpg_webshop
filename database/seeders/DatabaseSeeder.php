@@ -123,12 +123,13 @@ class DatabaseSeeder extends Seeder
             'image' => 'storage/item_images/health_potion.jpg',
         ]);
         \App\Models\Item::create([
-            'name' => 'Sword of Power',
-            'description' => 'A long sword to compensate for other stuff.',
-            'price' => 29.99,
-            'category' => 'Sword',
-            'image' => 'storage/item_images/sword.jpg',
+            'name' => 'Mana potion',
+            'description' => 'Refills your mana!',
+            'price' => 5,
+            'category' => 'Potion',
+            'image' => 'storage/item_images/mana.jpg',
         ]);
+        
         \App\Models\Item::create([
             'name' => 'Steel Helmet',
             'description' => 'A helmet to protect your empty head.',
@@ -139,16 +140,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Item::create([
             'name' => 'Golden Ring',
             'description' => 'A golden ring, perfect for your mistress.',
-            'price' => 99.99,
+            'price' => 99,
             'category' => 'Armor',
             'image' => 'storage/item_images/ring.jpg',
         ]);
         \App\Models\Item::create([
-            'name' => 'Wand',
-            'description' => 'A magical staff, you\'re a wizard :username!',
-            'price' => 39.99,
-            'category' => 'Wand',
-            'image' => 'storage/item_images/wand.jpg',
+            'name' => 'Enchanted Dice Set',
+            'description' => 'Give them a roll, and see what happens',
+            'price' => 75,
+            'category' => 'Accessory',
+            'image' => 'storage/item_images/enchanted_dice.jpg',
         ]);
         \App\Models\Item::create([
             'name' => 'Healers Kit',
@@ -165,12 +166,112 @@ class DatabaseSeeder extends Seeder
             'image' => 'storage/item_images/wizard_hat.jpg',
         ]);
         \App\Models\Item::create([
+            'name' => 'Dragon Egg',
+            'description' => 'Wait till it hatches!',
+            'price' => 500,
+            'category' => 'Pet',
+            'image' => 'storage/item_images/dragon_egg.jpg',
+        ]);
+        \App\Models\Item::create([
             'name' => 'Potion kit',
             'description' => 'Don\'t drink them all at the same time!',
             'price' => 25,
             'category' => 'Adventure Kit',
             'image' => 'storage/item_images/potion_kit.jpg',
         ]);
+        \App\Models\Item::create([
+            'name' => 'Adventure Bag',
+            'description' => 'This can hold tons of items!',
+            'price' => 20,
+            'category' => 'Utility',
+            'image' => 'storage/item_images/bag.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Celestial Compass',
+            'description' => 'Let it guide you!',
+            'price' => 150,
+            'category' => 'Accessory',
+            'image' => 'storage/item_images/celestial_compass.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Crystal Ball',
+            'description' => 'Mages will know how to use it.',
+            'price' => 40,
+            'category' => 'Accessory',
+            'image' => 'storage/item_images/crystal_ball.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Dungeon Key',
+            'description' => 'Be careful, it\'s dangerous in there',
+            'price' => 60,
+            'category' => 'Utility',
+            'image' => 'storage/item_images/dungeon_key.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Sword of Power',
+            'description' => 'A long sword to compensate for other stuff.',
+            'price' => 29,
+            'category' => 'Sword',
+            'image' => 'storage/item_images/sword.jpg',
+        ]);
+        
+        \App\Models\Item::create([
+            'name' => 'Wand',
+            'description' => 'A magical staff, you\'re a wizard :username!',
+            'price' => 25,
+            'category' => 'Wand',
+            'image' => 'storage/item_images/wand.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Healing Amulet',
+            'description' => 'Heals you overtime',
+            'price' => 40,
+            'category' => 'Accessory',
+            'image' => 'storage/item_images/heal_amulet.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Obsidian Axe',
+            'description' => 'This will never break!',
+            'price' => 35,
+            'category' => 'Axe',
+            'image' => 'storage/item_images/obsidian_axe.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Basic Pickaxe',
+            'description' => 'For mining, not fighting!',
+            'price' => 15,
+            'category' => 'Axe',
+            'image' => 'storage/item_images/pickaxe.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Staff of Lightning and Fire',
+            'description' => 'Don\'t swing it too hard!',
+            'price' => 350,
+            'category' => 'Staff',
+            'image' => 'storage/item_images/staff_thunder_fire.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Stardust Vial',
+            'description' => 'Very rare! use it wisely!',
+            'price' => 999,
+            'category' => 'Potion',
+            'image' => 'storage/item_images/stardust_vial.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Vampire Shield',
+            'description' => 'A shield made by vampire\'s!',
+            'price' => 40,
+            'category' => 'Armor',
+            'image' => 'storage/item_images/vampire_shield.jpg',
+        ]);
+        \App\Models\Item::create([
+            'name' => 'Staff of Life',
+            'description' => 'Enhanced healing ability\'s',
+            'price' => 60,
+            'category' => 'Staff',
+            'image' => 'storage/item_images/staff_of_life.jpg',
+        ]);
+    
 
 ///////////
 //CONTACT//

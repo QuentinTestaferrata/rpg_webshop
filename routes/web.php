@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,8 @@ Route::delete('/quests/delete/{id}', [QuestController::class, 'deleteQuest'])->n
 //Buy
 Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
 
+//inventory
+Route::get('/inventory', [InventoryController::class, 'showInventory'])->name('inventory');
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');

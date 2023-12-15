@@ -62,11 +62,10 @@
                                 <a class="nav-link">Pouch: {{ Auth::user()->balance }}$</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link" href="inventory">Inventory</a>
                             </li>
-                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
 
                             <!-- User dropdown     -->
@@ -86,6 +85,9 @@
                                     @endif
                                     <a class="dropdown-item" href="{{ route('my_quests.show') }}">
                                         My Quests
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('faq.faq') }}">
+                                        FAQ
                                     </a>
                                     <a class="dropdown-item" href="{{ route('about') }}">
                                         About

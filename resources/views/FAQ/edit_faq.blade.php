@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+    
     <div class="container">
         <div class="row">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
             <div class="col">
-                <h2>Categories:</h2>
+                <h2 style="color: white;">Categories:</h2>
             </div>
             <div class="col text-right">
                 <form method="POST" action="{{ route('add_category') }}" class="form-inline">
@@ -43,19 +49,19 @@
 
     
     <div class="container">
-        <h2>Edit FAQ Items</h2>
+        <h2 style="color: white;">Edit FAQ Items</h2>
 
         @foreach($categories as $category)
-            <h3>{{ $category->name }}</h3>
+            <h3 style="color: white;">{{ $category->name }}</h3>
             @foreach($category->faqItems as $faqItem)
                 <div class="mb-3">
                     <form method="POST" action="{{ route('update_faq_item', ['id' => $faqItem->id]) }}" class="d-inline">
                         @csrf
                         @method('PUT')
-                        <strong>Q:</strong>
+                        <strong style="color: white;">Q:</strong>
                         <input type="text" name="question"  value="{{ $faqItem->question }}" required>
                         <br>
-                        <strong>A:</strong>
+                        <strong style="color: white;">A:</strong>
                         <textarea name="answer" rows="2" required>{{ $faqItem->answer }}</textarea>
                         <button type="submit" class="btn btn-primary btn-sm">Save</button>
                     </form>
@@ -70,20 +76,33 @@
             <div class="mb-3">
                 <form method="POST" action="{{ route('add_faq_item', ['category_id' => $category->id]) }}">
                     @csrf
-                    <strong>Q:</strong>
+                    <strong style="color: white;">Q:</strong>
                     <input type="text" name="new_question" required>
                     <br>
-                    <strong>A:</strong>
+                    <strong style="color: white;">A:</strong>
                     <textarea name="new_answer" rows="2" required></textarea>
                     <button type="submit" class="btn btn-success btn-sm">Add Item</button>
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                    
                 </form>
             </div>
             <hr>
+           
         @endforeach
+       
     </div>
+
+    <style>
+        body {
+            background-image: url('{{ asset('storage/images/night.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        html,
+        body {
+            height: 100vh;
+        }
+    </style>
 @endsection
