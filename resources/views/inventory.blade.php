@@ -28,7 +28,7 @@
                 </tbody>
             </table>
         @else
-            <p>Your inventory is empty.</p>
+            <p style="color: white;">Your inventory is empty go and buy something from the shop!</p>
         @endif
     </div>
     <style>

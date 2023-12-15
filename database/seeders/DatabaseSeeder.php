@@ -72,6 +72,15 @@ class DatabaseSeeder extends Seeder
             'profile_picture' => 'profile_pictures/lichking.png',
             'aboutme' => 'Frostmourne hungers.'
         ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Default',
+            'email' => 'default@gmail.com',
+            'password' => 'Password!321',
+            'birthday' => '2000-10-10',
+            'role' => 'user',
+            'profile_picture' => '',
+            'aboutme' => ''
+        ]);
         
 //////////////////
 //FAQ CATEGORIES//
