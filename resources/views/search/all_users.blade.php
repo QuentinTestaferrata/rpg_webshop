@@ -14,8 +14,6 @@
                     <th>Actions</th>
                     <th></th>
                 </tr>
-                <tr>
-                </tr>
             </thead>
             <tbody>
                 @foreach($users as $user)
@@ -24,10 +22,12 @@
                             @if($user->profile_picture)
                                 <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile Picture" width="50" height="50">
                             @else
-                                <!--mss default foto adden-->
+                                <img src="{{ asset('storage/profile_pictures/default.png') }}" alt="Profile Picture" width="50" height="50">
                             @endif
                         </td>
-                        <td>{{ $user->name }}</td>
+                        <td>
+                            <a href="{{ route('profile.show', ['user' => $user]) }}">{{ $user->name }}</a>
+                        </td>
                         <td>{{ $user->birthday }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
@@ -56,7 +56,7 @@
                         </td>
                     </tr>
                 @endforeach
-            </body>
+            </tbody>
         </table>
     </div>
 @endsection

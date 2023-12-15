@@ -15,7 +15,7 @@
 </div>
 <style>
     body {
-        background-image: url('{{ asset('images/nightvillage.png') }}');
+        background-image: url('{{ asset('storage/images/nightvillage.png') }}');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

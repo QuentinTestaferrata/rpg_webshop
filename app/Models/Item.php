@@ -9,4 +9,8 @@ class Item extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'category', 'price', 'description', 'image'];
+    
+    public function inventory(){
+        return $this->hasMany(Inventory::class);
+    }
 }

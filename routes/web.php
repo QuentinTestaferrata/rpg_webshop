@@ -11,6 +11,8 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,7 +91,11 @@ Route::get('/quests/accept/{id}', [QuestController::class, 'acceptQuest'])->name
 Route::post('/quests/claim/{id}', [QuestController::class, 'claimReward'])->name('quests.claim');
 Route::delete('/quests/delete/{id}', [QuestController::class, 'deleteQuest'])->name('quests.delete');
 
+//Buy
+Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');
 
+//inventory
+Route::get('/inventory', [InventoryController::class, 'showInventory'])->name('inventory');
 
 //profile page
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');

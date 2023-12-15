@@ -21,22 +21,21 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                <img src="{{ asset('images/FantasyForgeNav.png') }}" alt="Fantasy Forge Logo" style="max-height: 30px;">
+                <img src="{{ asset('storage/images/FantasyForgeNav.png') }}" alt="Fantasy Forge Logo" style="max-height: 30px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--left Side Of Navbar  -->
+                @if(Auth::check())
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('quests.show') }}">Adventures</a>
                         </li>
                     </ul>
-
-                <!--searchbar -->
-                @if(Auth::check())
+                    <!--searchbar -->
                     <form class="d-flex mx-auto" action="{{ route('search.users') }}" method="GET">
                         <input name="query" class="form-control me-2" type="text" placeholder="Look for friends" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Go!</button>
@@ -63,11 +62,10 @@
                                 <a class="nav-link">Pouch: {{ Auth::user()->balance }}$</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">Home</a>
+                                <a class="nav-link" href="inventory">Inventory</a>
                             </li>
-                            
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('faq.faq') }}">FAQ</a>
+                                <a class="nav-link" href="{{ route('home') }}">Home</a>
                             </li>
 
                             <!-- User dropdown     -->
@@ -87,6 +85,9 @@
                                     @endif
                                     <a class="dropdown-item" href="{{ route('my_quests.show') }}">
                                         My Quests
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('faq.faq') }}">
+                                        FAQ
                                     </a>
                                     <a class="dropdown-item" href="{{ route('about') }}">
                                         About

@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
           body {
-            background-image: url('{{ asset('images/Midjourney_LoginPage.png') }}');
+            background-image: url('{{ asset('storage/images/Midjourney_LoginPage.png') }}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,6 +42,5 @@
     </head>
     <body class="antialiased">
     <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-    <img src="/images/FantasyForge.png" alt="Fantasy Forge Logo" class="fantasy-forge-logo">
-
+    <img src="storage/images/FantasyForge.png" alt="Fantasy Forge Logo" class="fantasy-forge-logo">
 </html>
