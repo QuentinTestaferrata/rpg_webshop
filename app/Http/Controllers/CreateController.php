@@ -9,7 +9,7 @@ class CreateController extends Controller
 {
     public function show()
     {
-        return view('create_item');
+        return view('home_and_items/create_item');
     }
 
     public function store(Request $request)

@@ -32,7 +32,7 @@ class UpdateItemController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('item_images', 'public');
-            $item->image = $imagePath;
+            $item->image = 'storage/' . $imagePath;
         }
 
         $item->save();

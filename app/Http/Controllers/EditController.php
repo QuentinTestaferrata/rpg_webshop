@@ -10,6 +10,6 @@ class EditController extends Controller
     public function show($id)
     {
         $item = Item::find($id);
-        return view('edit_item', compact('item'));
+        return view('home_and_items/edit_item', compact('item'));
     }
 }

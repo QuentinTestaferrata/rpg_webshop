@@ -13,5 +13,4 @@ class InventoryController extends Controller
         $items = $user->inventory()->with('item')->get(); 
         return view('inventory', compact('items'));
     }
-
 }

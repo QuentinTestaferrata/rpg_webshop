@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
             'name' => 'Quentin',
             'email' => 'admin@gmail.com',
-            'password' => 'Qr931768463',
+            'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'profile_picture' => 'profile_pictures/me.png',
             'role' => 'admin',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
             'name' => 'Gandalf The Gray',
             'email' => 'user@gmail.com',
-            'password' => 'Qr931768463',
+            'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'role' => 'user',
             'profile_picture' => 'profile_pictures/gandalf.png',
@@ -48,15 +48,24 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Gandalf The White',
             'email' => 'user1@gmail.com',
-            'password' => 'Qr931768463',
+            'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'role' => 'user',
             'profile_picture' => 'profile_pictures/gandalfwhite.png',
             'aboutme' => 'A wizard is never late, nor is he early, he arrives precisely when he means to.'
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Legolas',
+            'name' => 'Queen of the Sea',
             'email' => 'user2@gmail.com',
+            'password' => 'Password!321',
+            'birthday' => '2000-10-10',
+            'role' => 'user',
+            'profile_picture' => 'profile_pictures/pirate_queen.png',
+            'aboutme' => '1v1 me Jack Sparrow!'
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Legolas',
+            'email' => 'user3@gmail.com',
             'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'role' => 'user',
@@ -65,7 +74,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\User::factory()->create([
             'name' => 'The Lich King',
-            'email' => 'user3@gmail.com',
+            'email' => 'user4@gmail.com',
             'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'role' => 'user',
@@ -217,13 +226,12 @@ class DatabaseSeeder extends Seeder
             'image' => 'storage/item_images/dungeon_key.jpg',
         ]);
         \App\Models\Item::create([
-            'name' => 'Sword of Power',
-            'description' => 'A long sword to compensate for other stuff.',
-            'price' => 29,
-            'category' => 'Sword',
-            'image' => 'storage/item_images/sword.jpg',
+            'name' => 'Pirate Ship',
+            'description' => 'Ready to explore the sea?',
+            'price' => 15000,
+            'category' => 'Utility',
+            'image' => 'storage/item_images/boat.jpg',
         ]);
-        
         \App\Models\Item::create([
             'name' => 'Wand',
             'description' => 'A magical staff, you\'re a wizard :username!',
@@ -275,12 +283,18 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Item::create([
             'name' => 'Staff of Life',
-            'description' => 'Enhanced healing ability\'s',
+            'description' => 'Enhances healing ability\'s',
             'price' => 60,
             'category' => 'Staff',
             'image' => 'storage/item_images/staff_of_life.jpg',
         ]);
-    
+        \App\Models\Item::create([
+            'name' => 'Sword of Power',
+            'description' => 'A long sword to compensate for other stuff.',
+            'price' => 29,
+            'category' => 'Sword',
+            'image' => 'storage/item_images/sword.jpg',
+        ]);
 
 ///////////
 //CONTACT//

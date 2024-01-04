@@ -43,7 +43,7 @@ class QuestController extends Controller
             'reward' => $request->input('reward'),
             'duration' => $request->input('duration'),
         ]);
-        return redirect()->route('home');
+        return redirect()->route('quests.show');
     }
     public function acceptQuest($id){
         $quest = Quest::find($id);
