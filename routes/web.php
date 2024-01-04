@@ -35,20 +35,25 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     //Profile
     Route::post('/profile/make-admin/{user}', [ProfileController::class, 'makeAdmin'])->name('profile.make_admin');
     Route::match(['post', 'patch'], '/profile/make-user/{user}', [ProfileController::class, 'makeUser'])->name('profile.make_user');
-
     Route::delete('/profile/delete/{user}', [ProfileController::class, 'deleteUser'])->name('profile.delete_user');
 
     //all users
     Route::get('/all_users', [UserController::class, 'showAllUsers'])->name('search.all_users');
     Route::delete('/profile/delete/{user}', [ProfileController::class, 'deleteUserFromUserList'])->name('profile.delete_user_from_list');
 
-    
+    //CONTACT
+    Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])->name('admin.inquiries');
+    Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');  
+
     //ITEM ROUTES
     Route::get('/create_item', [CreateController::class, 'show'])->name('create_item');
     Route::post('/store_item', [CreateController::class, 'store'])->name('store_item');
     Route::delete('/delete_item/{id}', [DeleteItemController::class, 'deleteItem'])->name('delete_item');
     Route::get('/edit/{id}', [EditController::class, 'show'])->name('edit_item');
     Route::patch('/update/{id}', [UpdateItemController::class, 'update'])->name('update_item'); //HERE
+    //QUESTS
+    Route::delete('/quests/delete/{id}', [QuestController::class, 'deleteQuest'])->name('quests.delete');
+    Route::get('/create_quest', [QuestController::class, 'createQuest'])->name('quest.create');
 
     //FAQ
     Route::get('/faq_edit', [FAQController::class, 'editFaqView'])->name('faq.edit_faq');
@@ -57,8 +62,8 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::put('/faq/edit_item/{id}', [FAQController::class, 'updateFaqItem'])->name('update_faq_item');
     Route::delete('/faq/delete/{id}', [FAQController::class, 'deleteFaqItem'])->name('delete_faq_item');
     Route::post('/faq/add-item/{category_id}', [FAQController::class, 'addFaqItem'])->name('add_faq_item');
+    Route::put('/faq/edit_category/{id}', [FAQController::class, 'updateFaqCategory'])->name('update_faq_category');
 });
-Route::put('/faq/edit_category/{id}', [FAQController::class, 'updateFaqCategory'])->name('update_faq_category');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')
 //->name('home')
@@ -76,8 +81,6 @@ Route::get('/search-users', [UserController::class, 'searchUsers'])->name('searc
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact.form');
 Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
 Route::get('/inquiry/{id}', [ContactController::class, 'showInquiry'])->name('contact.show');
-Route::get('/admin/inquiries', [ContactController::class, 'showAdminInquiries'])->name('admin.inquiries');
-Route::post('/admin/inquiries/respond/{id}', [ContactController::class, 'respondToInquiry'])->name('admin.inquiries.respond');
 Route::get('/user_inquiries', [ContactController::class, 'showUserInquiries'])->name('contact.user_inquiries');
 Route::delete('/inquiry/delete_admin/{id}', [ContactController::class, 'deleteInquiry'])->name('inquiry.delete');
 Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteUserInquiry'])->name('inquiry.user.delete');
@@ -85,11 +88,9 @@ Route::delete('/inquiry/delete/{id}', [ContactController::class, 'deleteUserInqu
 //Quests
 Route::get('/quests', [QuestController::class, 'showQuestBoard'])->name('quests.show');
 Route::get('/my_quests', [QuestController::class, 'showMyQuests'])->name('my_quests.show');
-Route::get('/create_quest', [QuestController::class, 'createQuest'])->name('quest.create');
 Route::post('/quests', [QuestController::class, 'makeQuest'])->name('quests.create_quest');
 Route::get('/quests/accept/{id}', [QuestController::class, 'acceptQuest'])->name('quests.accept');
 Route::post('/quests/claim/{id}', [QuestController::class, 'claimReward'])->name('quests.claim');
-Route::delete('/quests/delete/{id}', [QuestController::class, 'deleteQuest'])->name('quests.delete');
 
 //Buy
 Route::post('/purchase/{item_id}', [PurchaseController::class, 'purchase'])->name('purchase');

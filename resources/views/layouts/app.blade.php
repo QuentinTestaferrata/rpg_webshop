@@ -62,7 +62,7 @@
                                 <a class="nav-link">Pouch: {{ Auth::user()->balance }}$</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="inventory">Inventory</a>
+                            <a class="nav-link" href="{{ route('inventory') }}">Inventory</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">Home</a>
