@@ -63,7 +63,7 @@
                         <div class="card-body" style="padding: 10px;">
                             <h5 class="card-title"><strong>{{ $item->name }}</strong></h5>
                             <p class="card-text">{{ $item->description }}</p>
-                            <p class="card-text"><strong>Price:</strong> ${{ $item->price }}</p>
+                            <p class="card-text"><strong>Price:</strong> ${{ (int)$item->price }}</p>
                             <p class="card-text"><strong>Category:</strong> {{ $item->category }}</p>
                             <p class="card-text"><strong>publish date:</strong> {{ $item->created_at }}</p>
                             <!-- alleen admin -->

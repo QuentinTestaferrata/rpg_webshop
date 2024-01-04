@@ -226,13 +226,12 @@ class DatabaseSeeder extends Seeder
             'image' => 'storage/item_images/dungeon_key.jpg',
         ]);
         \App\Models\Item::create([
-            'name' => 'Sword of Power',
-            'description' => 'A long sword to compensate for other stuff.',
-            'price' => 29,
-            'category' => 'Sword',
-            'image' => 'storage/item_images/sword.jpg',
+            'name' => 'Pirate Ship',
+            'description' => 'Ready to explore the sea?',
+            'price' => 15000,
+            'category' => 'Utility',
+            'image' => 'storage/item_images/boat.jpg',
         ]);
-        
         \App\Models\Item::create([
             'name' => 'Wand',
             'description' => 'A magical staff, you\'re a wizard :username!',
@@ -289,7 +288,13 @@ class DatabaseSeeder extends Seeder
             'category' => 'Staff',
             'image' => 'storage/item_images/staff_of_life.jpg',
         ]);
-    
+        \App\Models\Item::create([
+            'name' => 'Sword of Power',
+            'description' => 'A long sword to compensate for other stuff.',
+            'price' => 29,
+            'category' => 'Sword',
+            'image' => 'storage/item_images/sword.jpg',
+        ]);
 
 ///////////
 //CONTACT//
