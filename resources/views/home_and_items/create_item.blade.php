@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">{{ __('Upload Picture') }}</label>
+                                <label for="image" class="form-label">{{ __('Upload Picture (.jpg)') }}</label>
                                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                             </div>
 
@@ -50,4 +50,22 @@
             </div>
         </div>
     </div>
+    <style>
+    body {
+        background-image: url('{{ asset('storage/images/webshop.png') }}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    html, body {
+        height: 100%;
+    }
+    hr {
+        width: 40%;
+    }
+    .total{
+        padding-top: 30px;
+    }
+</style>
 @endsection

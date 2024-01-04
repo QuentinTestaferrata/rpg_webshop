@@ -30,7 +30,7 @@ class HomeController extends Controller
             $item->description = str_replace(':username', $user->name, $item->description);
             return $item;
         });
-        return view('home', compact('items'));
+        return view('home_and_items/home', compact('items'));
     }
     public function about(){
         return view('about');
