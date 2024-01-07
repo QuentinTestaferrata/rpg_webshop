@@ -78,17 +78,17 @@
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()) }}">
                                         Profile
                                     </a>
-                                    @if(Auth::user()->role=='user')
-                                        <a class="dropdown-item" href="{{ route('contact.form') }}">
-                                            Contact
-                                        </a>
-                                    @endif
                                     <a class="dropdown-item" href="{{ route('my_quests.show') }}">
                                         My Quests
                                     </a>
                                     <a class="dropdown-item" href="{{ route('faq.faq') }}">
                                         FAQ
                                     </a>
+                                    @if(Auth::user()->role=='user')
+                                        <a class="dropdown-item" href="{{ route('contact.form') }}">
+                                            Contact
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('about') }}">
                                         About
                                     </a>

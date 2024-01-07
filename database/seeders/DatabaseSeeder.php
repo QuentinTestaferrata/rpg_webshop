@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'Password!321',
             'birthday' => '2000-10-10',
             'role' => 'user',
-            'profile_picture' => 'profile_pictures/pirate_queen.png',
+            'profile_picture' => 'profile_pictures/pirate_queen.jpg',
             'aboutme' => '1v1 me Jack Sparrow!'
         ]);
         \App\Models\User::factory()->create([
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'aboutme' => 'Frostmourne hungers.'
         ]);
         \App\Models\User::factory()->create([
-            'name' => 'Default',
+            'name' => 'Default Profile Picture',
             'email' => 'default@gmail.com',
             'password' => 'Password!321',
             'birthday' => '2000-10-10',
@@ -350,7 +350,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kill the Ender Dragon',
             'description' => 'Go to the end using an End Portal and slay the Ender Dragon! Bring back it\'s egg and you will receive a huge reward!',
             'reward' => 99000,
-            'duration' => 1,
+            'duration' => .1,
             'status' => 'accepted',
             'active_user_id' => 2
         ]);
