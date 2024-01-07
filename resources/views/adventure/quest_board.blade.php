@@ -20,9 +20,9 @@
                     <div class="card mb-3">
                         <div class="card-header"><strong>{{ $quest->name }}</strong></div>
                         <div class="card-body">
-                            <p>Description: {{ $quest->description }}</p>
-                            <p>Quest duration: {{ $quest->duration }} minutes</p>
-                            <p><strong>Reward: {{ $quest->reward }}$</strong></p>
+                            <p><strong>Description:</strong> {{ $quest->description }}</p>
+                            <p><strong>Quest duration:</strong> {{ $quest->duration }} minutes</p>
+                            <p><strong>Reward: <span style="color: green;">{{ $quest->reward }}$</span></strong></p>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="{{ route('quests.accept', ['id' => $quest->id]) }}" class="btn btn-primary">Accept Quest</a>

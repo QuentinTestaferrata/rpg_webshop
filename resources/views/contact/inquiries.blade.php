@@ -13,7 +13,7 @@
         @foreach($inquiries as $inquiry)
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $inquiry->title }} - from: {{ $inquiry->username }}</h5>
+                    <h5 class="card-title"><strong>{{ $inquiry->title }} - from: {{ $inquiry->username }}</strong></h5>
                     <p class="card-text">{{ $inquiry->problem }}</p>
 
                     @if ($inquiry->status == 'pending')
@@ -29,7 +29,7 @@
                             <button type="submit" class="btn btn-primary">Respond</button>
                         </form>
                     @elseif ($inquiry->status == 'resolved')
-                        <h6 class="card-subtitle mb-2 text-success">Resolved</h6>
+                        <h6 class="card-subtitle mb-2 text-success"><strong>Resolved</strong></h6>
                         <p class="card-text">Response: {{ $inquiry->response }}</p>
                     @endif
                     <form method="POST" style="margin-top: 10px;" action="{{ route('inquiry.delete', ['id' => $inquiry->id]) }}">

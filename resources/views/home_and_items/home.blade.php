@@ -180,6 +180,7 @@
     } else {
         buyButton.removeAttribute('disabled');
     }
+    
 }
 
 </script>
