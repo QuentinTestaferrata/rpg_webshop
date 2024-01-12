@@ -8,45 +8,9 @@
                 <div class="text-end">
                     <!-- Filter voor iedereen en create voor admins-->
                     <div class="dropdown">
-
                         @if(Auth::user()->role=='admin')
                         <a href="{{ route('create_item') }}" class="btn btn-primary">Create</a> 
                         @endif
-
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                            <li class="px-3">
-                                <input type="radio" name="category" id="all" class="form-check-input" checked>
-                                <label for="all" class="form-check-label">All</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Armor" class="form-check-input">
-                                <label for="Armor" class="form-check-label">Armor</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Sword" class="form-check-input">
-                                <label for="Sword" class="form-check-label">Swords</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Wand" class="form-check-input">
-                                <label for="Wand" class="form-check-label">Wands</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Staff" class="form-check-input">
-                                <label for="Staff" class="form-check-label">Staffs</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Potion" class="form-check-input">
-                                <label for="Potion" class="form-check-label">Potions</label>
-                            </li>
-                            <li class="px-3">
-                                <input type="radio" name="category" id="Adventure kit" class="form-check-input">
-                                <label for="Adventure_kit" class="form-check-label">Adventure Kits</label>
-                            </li>
-                        </ul>
                     </div>                 
                 </div>
             </div>
@@ -180,6 +144,7 @@
     } else {
         buyButton.removeAttribute('disabled');
     }
+    
 }
 
 </script>

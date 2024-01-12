@@ -20,7 +20,7 @@
         <div class="col-md-6 mb-3">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Q: {{ $faqItem->question }}</h5>
+                    <h5 class="card-title"><strong>Q:</strong> {{ $faqItem->question }}</h5>
                     <p class="card-text"><strong>A:</strong> {{ $faqItem->answer }}</p>
                 </div>
             </div>

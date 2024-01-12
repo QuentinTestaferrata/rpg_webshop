@@ -3,14 +3,20 @@
 @section('content')
     
     <div class="container">
+        
         <div class="row">
+            
         @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
+    
             <div class="col">
                 <h2 style="color: white;">Categories:</h2>
+                <a class="btn btn-primary" href="{{ route('home') }}">
+            Back
+        </a>
             </div>
             <div class="col text-right">
                 <form method="POST" action="{{ route('add_category') }}" class="form-inline">

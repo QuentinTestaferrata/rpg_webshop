@@ -11,6 +11,9 @@
             <h3>Response:</h3>
             <p>{{ $inquiry->response }}</p>
         @endif
+        <a class="btn btn-primary" href="{{ route('contact.form') }}">
+            Back
+        </a>
     </div>
     <style>
         body {
