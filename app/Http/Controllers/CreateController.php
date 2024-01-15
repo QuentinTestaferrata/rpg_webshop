@@ -34,7 +34,7 @@ class CreateController extends Controller
             'description' => $request->input('description'),
             'image' => 'storage/' . $imagePath,
         ]);
-        return redirect('/home');
+        return redirect('/create_item');
     }
 }
 

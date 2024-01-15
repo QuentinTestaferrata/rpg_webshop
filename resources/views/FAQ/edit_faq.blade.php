@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    
+<a class="btn btn-primary ml-3" href="{{ route('faq.faq') }}">
+    Go to FAQ
+</a>
     <div class="container">
         
         <div class="row">
@@ -14,14 +16,12 @@
     
             <div class="col">
                 <h2 style="color: white;">Categories:</h2>
-                <a class="btn btn-primary" href="{{ route('home') }}">
-            Back
-        </a>
+                
             </div>
             <div class="col text-right">
                 <form method="POST" action="{{ route('add_category') }}" class="form-inline">
                     @csrf
-                    <div class="form-group mx-sm-3 mb-2">
+                    <div class="form-group mx-sm-3">
                         <button type="submit" class="btn btn-primary mb-2">Add Category
                             <input type="text" class="form-control" id="categoryInput" name="category_name" placeholder="Enter category name" required>
                         </button>

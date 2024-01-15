@@ -107,6 +107,9 @@
                                         <a class="dropdown-item" href="{{ route('quest.create') }}">
                                             Create Quests
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('faq.edit_faq') }}">
+                                            Edit FAQ
+                                        </a>
                                         <a class="dropdown-item" href="{{ route('admin.inquiries') }}">
                                             Contact Requests
                                         </a>
