@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -32,7 +32,7 @@
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <button type="submit" class="btn btn-primary">{{ __('Create Quest') }}</button>
-                                <a href="{{ route('quests.show') }}" class="btn btn-secondary">Back</a>
+                                <a href="{{ route('quests.show') }}" class="btn btn-secondary">Go to Quest Board</a>
                             </div>
                         </form>
                     </div>

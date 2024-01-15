@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -44,6 +44,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">{{ __('Create Item') }}</button>
+                            <a href="{{ route('home') }}" class="btn btn-secondary ml-2">Go to Items page</a>
                         </form>
                     </div>
                 </div>

@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <body>
 <p>This is my RPG web shop, I've chosen this since it would be something i would like creating, which would keep me motivated.<br>
 If you have a web extension for dark mode, disable it, because it messes up the colors and backgrounds.<br>
@@ -79,6 +82,10 @@ https://www.youtube.com/watch?v=MYyJ4PuL4pY&t=1024s&ab_channel=TraversyMedia   (
 body{
     background-color: #161616;
     color: white;
-    font-size: 20px;
+}
+p{
+    font-size: 18px;
+    margin-left: 20px;
 }
 </style>
+@endsection

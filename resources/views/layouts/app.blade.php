@@ -100,12 +100,15 @@
                                     </form>
                                     @if(Auth::user()->role=='admin')
                                         <div class="dropdown-divider"></div>
-                                        <div class="dropdown-header">Admin Options</div>
+                                        <div class="dropdown-header">Admin Panel</div>
                                         <a class="dropdown-item" href="{{ route('search.all_users') }}">
                                             User List
                                         </a>
                                         <a class="dropdown-item" href="{{ route('quest.create') }}">
                                             Create Quests
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('faq.edit_faq') }}">
+                                            Edit FAQ
                                         </a>
                                         <a class="dropdown-item" href="{{ route('admin.inquiries') }}">
                                             Contact Requests
