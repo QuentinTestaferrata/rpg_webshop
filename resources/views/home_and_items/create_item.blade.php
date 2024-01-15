@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container">
@@ -43,6 +43,7 @@
                                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
                             </div>
 
+                            <button type="submit" class="btn btn-primary">{{ __('Create Item') }}</button>
                             <button type="submit" class="btn btn-primary">{{ __('Create Item') }}</button>
                         </form>
                     </div>
